@@ -8,5 +8,5 @@ public:
   ~TournamentDeme();
 
 protected:
-  virtual Chrmosome* select_parent();
+  virtual Chromosome* select_parent();
 };

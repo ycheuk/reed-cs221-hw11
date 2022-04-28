@@ -1,17 +1,17 @@
 #pragma once
 #include "cities.hh"
-#include "chrmosome.hh"
+#include "chromosome.hh"
 
-class ClimbChromosome : public Chrmosome {
+class ClimbChromosome : public Chromosome {
 public:
-  ClimbChrmosome(const Cities* cities_ptr) : Chrmosome(cities_ptr){}
+  ClimbChromosome(const Cities* cities_ptr) : Chromosome(cities_ptr){}
 
-  virtual ~ClimbChermosome() = default;
+  virtual ~ClimbChromosome() = default;
 
   virtual void mutate() override;
 
-  virtual Chrmosom e* clone() const override
+  virtual Chromosome* clone() const override
   {
-    return new ClimbChrmosome(cities_ptr);
+    return new ClimbChromosome(cities_ptr);
   }
 };
