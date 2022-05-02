@@ -4,7 +4,9 @@
 
 class ClimbChromosome : public Chromosome {
 public:
-  ClimbChromosome(const Cities* cities_ptr) : Chromosome(cities_ptr){}
+  ClimbChromosome(const Cities* cities_ptr) 
+   : Chromosome(cities_ptr)
+  {}
 
   virtual ~ClimbChromosome() = default;
 
@@ -12,6 +14,6 @@ public:
 
   virtual Chromosome* clone() const override
   {
-    return new ClimbChromosome(cities_ptr);
+    return new ClimbChromosome(cities_ptr_);
   }
 };

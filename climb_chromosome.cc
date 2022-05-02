@@ -1,4 +1,4 @@
-#includ <cassert>
+#include <cassert>
 
 #include "climb_chromosome.hh"
 
@@ -35,6 +35,3 @@ void ClimbChromosome::mutate(){
   }
 }
 
-Chromosome* ClimbChromosome::clone() const{
-  return new ClimbChromosome(*this);
-}
