@@ -2,17 +2,29 @@
 #include "climb_chromosome.hh"
 #include "cities.hh"
 
-void TournamentDeme::compute_next_generation() 
+Chromosome* TournamentDeme::select_parent()
 {
-	// Initialize a new vector with half the space as the old vector
-	std::vector<Chromosome*> newPop;
-	newPop.reserve(pop_.size() / 2);
+	// Find the power of 2 that accommodates the most parents
+	int base = 1;
+	while(std::pow(base, 2) <= pop_.size()) {
+		base = std::pow(base, 2);
+	}
 
-	static std::uniform_real_distribution<double> dist(0.0, 1.0);
+	// Randomly select enough parents to fit into the tournament
+	std::vector<*Chromosome> tournamentBracket;
+	tournamentBracket.reserve(base);
 
-	for(unsigned i = 0; i < pop.size()/2; i++) {
-		auto parent1 = select_parent();
-		auto parent2 = select_parent();
+	for(auto i; i < base; i++) {
+		std::uniform_int_distribution<int> range(0, pop_.size());
+		tournamentBracket.push_back(pop_.at(range(generator_)));
+	}
+
+	// Compare every 2 chromosomes, moving the more fit one up in the tournament
+	for(auto i; i < tournamentBracket.size(), i+=2) {
+		auto chromosome1 = tournamentBracket[i];
+		auto chromosome2 = tournamentBracket[i + 1];
+
+		if(chromosome1 -> get_fitness() >= chrom)
 	}
 
 }
