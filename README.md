@@ -3,7 +3,10 @@ By [Vaughn Zaayer](https://github.com/vaughnzaayer) and [Yik Yin Cheuk](https://
 <br />
 **Note**: If you see the user "AnastasiyaV" it's me (Yik Yin)!! It's just my laptop / English name that nobody knows about!
 ## climb_chromosome
-- Mutated based on their performance. 
+- Mutated based on their performance in a local hill climbing. 
+- Uses if/else statements to determine the best solution of the current chromosome.
+- Uses the STL method `std::swap` to swap index `parent` (which is supposed to be named `p` but the single variable kept confusing me).  
+- The last if/else statment finds which of the three chromosomes produced the fittest ordering and chooses that fittest chromosome as the resulting mutated chromosome.
 
 ## tournament_deme
 - Select parents based on a tournament.
