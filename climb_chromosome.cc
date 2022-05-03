@@ -4,7 +4,7 @@
 
 void ClimbChromosome::mutate(){
   std::uniform_int_distribution<int> dist(0, order_.size()-1);
-  auto fitness1 = get_fitness(); 
+  auto fitness1 = get_fitness();
 
   long unsigned int parent1 = dist(generator_);
   long unsigned int parent2 = parent1 - 1;

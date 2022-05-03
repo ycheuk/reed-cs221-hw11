@@ -90,6 +90,12 @@ Chromosome::create_crossover_child(const Chromosome* p1, const Chromosome* p2,
     }
   }
 
+  std::cout << "New child: " << std::endl;
+  for(auto c : child -> get_ordering()) {
+    std::cout << c << std::endl;
+  }
+  std::cout << " " << std::endl;
+
   assert(child->is_valid());
   return child;
 }
