@@ -9,21 +9,23 @@
 Chromosome* TournamentDeme::select_parent()
 {
 	// Set the number of slots in the tournament
-	int slots = std::pow(2, 7);	
+	int slots = std::pow(2, 7);
 
+	// Create a roster with enough space to house chromosomes
 	std::vector<Chromosome*> roster;
 	roster.reserve(slots);
 
-	// Fill all available slots in roster
+	// Fill all available slots in roster at random
 	std::uniform_int_distribution<int> range(0, pop_.size() - 1);
 	for(int i = 0; i < slots; i++) {
 		roster.push_back(pop_.at(range(generator_)));
 	}
 
 	// Tournament loop
+	// Create a secondary vector to store the victors of each bracket
 	std::vector<Chromosome*> nextRound;
 	nextRound.reserve(roster.size());
-	while(slots > 1) {
+	while(slots > 1) { 	// Progress until their is one victor
 
 
 		slots = slots / 2;
@@ -40,11 +42,14 @@ Chromosome* TournamentDeme::select_parent()
 			}
 		}
 
+		// Move all victors into the main roster
 		roster.swap(nextRound);
+		// Clear the secondary vector to store next round's victors
 		nextRound.clear();
 
 	}
 
+	// Return the winner of the tournament
 	return roster[0];
 	
 }
