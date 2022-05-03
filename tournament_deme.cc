@@ -4,8 +4,6 @@
 
 #include <cassert>
 
-
-
 Chromosome* TournamentDeme::select_parent()
 {
 	// Set the number of slots in the tournament
