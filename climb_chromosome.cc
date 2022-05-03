@@ -28,7 +28,7 @@ void ClimbChromosome::mutate(){
     }
   }
   else{
-    if(fitness2 > fitness3){
+    if(fitness2 > fitness3){ 
       std::swap(order_[parent1], order_[parent2]);
       std::swap(order_[parent1], order_[parent3]);
     }
