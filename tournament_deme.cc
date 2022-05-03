@@ -9,7 +9,7 @@
 Chromosome* TournamentDeme::select_parent()
 {
 	// Set the number of slots in the tournament
-	int slots = std::pow(2, 5);	
+	int slots = std::pow(2, 7);	
 
 	std::vector<Chromosome*> roster;
 	roster.reserve(slots);
@@ -45,7 +45,6 @@ Chromosome* TournamentDeme::select_parent()
 
 	}
 
-	std::cout << roster[0] << std::endl;
 	return roster[0];
 	
 }

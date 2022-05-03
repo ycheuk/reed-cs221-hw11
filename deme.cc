@@ -17,7 +17,7 @@ Deme::Deme(const Cities* cities_ptr, unsigned pop_size, double mut_rate)
 {
   uint i = 0;
   while (i < pop_size){
-    Chromosome* c = new ClimbChromosome(cities_ptr);
+    Chromosome* c = new Chromosome(cities_ptr);
     pop_.push_back(c);
     i++;
   }
