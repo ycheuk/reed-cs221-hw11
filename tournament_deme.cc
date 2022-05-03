@@ -2,29 +2,49 @@
 #include "climb_chromosome.hh"
 #include "cities.hh"
 
+
+
+
 Chromosome* TournamentDeme::select_parent()
 {
-	// Find the power of 2 that accommodates the most parents
-	int base = 1;
-	while(std::pow(base, 2) <= pop_.size()) {
-		base = std::pow(base, 2);
+	// Set the number of slots in the tournament
+	int slots = std::pow(2, 5);	// 2 ^ 5
+
+	std::vector<Chromosome*> roster;
+	roster.reserve(slots);
+
+	// Fill all available slots in roster
+	std::uniform_int_distribution<int> range(0, pop_.size());
+	for(int i; i < slots; i++) {
+		roster.push_back(pop_.at(range(generator_)));
 	}
 
-	// Randomly select enough parents to fit into the tournament
-	std::vector<*Chromosome> tournamentBracket;
-	tournamentBracket.reserve(base);
+	// Tournament loop
+	std::vector<Chromosome*> nextRound;
+	while(slots > 1) {
 
-	for(auto i; i < base; i++) {
-		std::uniform_int_distribution<int> range(0, pop_.size());
-		tournamentBracket.push_back(pop_.at(range(generator_)));
+		slots = slots / 2;
+		nextRound.reserve(slots);
+		// For every 2 chromosomes, pit them against each other 
+		// Victor moves on to the next round
+		for(long unsigned int i; i < roster.size(); i += 2) {
+			auto chromosome1 = roster[i];
+			auto chromosome2 = roster[i + 1];
+			if(chromosome1 -> get_fitness() >= chromosome2 -> get_fitness()) {
+				nextRound.push_back(chromosome1);
+			}else {
+				nextRound.push_back(chromosome2);
+			}
+		}
+
+		roster.swap(nextRound);
+		
+		nextRound.clear();
+
+
 	}
 
-	// Compare every 2 chromosomes, moving the more fit one up in the tournament
-	for(auto i; i < tournamentBracket.size(), i+=2) {
-		auto chromosome1 = tournamentBracket[i];
-		auto chromosome2 = tournamentBracket[i + 1];
-
-		if(chromosome1 -> get_fitness() >= chrom)
-	}
-
+	std::cout << roster[0] << std::endl;
+	return roster[0];
+	
 }

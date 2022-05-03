@@ -4,11 +4,13 @@
 
 class TournamentDeme : public Deme{
 public:
-  TournamentDeme(const Cities* cities_ptr, unsigned pop_size, double mut_rate);
-  ~TournamentDeme();
+  TournamentDeme(const Cities* cities_ptr, unsigned pop_size, double mut_rate)
+  : Deme(cities_ptr, pop_size, mut_rate)
+  {}
 
-  virtual void compute_next_generation() override;
+  virtual ~TournamentDeme() = default;
+
 
 protected:
-  virtual Chromosome* select_parent();
+  virtual Chromosome* select_parent() override;
 };
